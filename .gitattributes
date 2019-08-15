@@ -1,0 +1,38 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.c   text
+*.h   text
+*.cpp text
+*.hpp text
+*.py  text
+*.xdc text
+
+# Declare files that will always have CRLF line endings on checkout.
+*.sln text eol=crlf
+
+# Denote all files that are truly binary and should not be modified.
+*.p    binary
+*.bmp  binary
+*.jpg  binary
+*.jpeg binary
+*.mp4  binary
+*.mpeg binary
+*.mov  binary
+*.png  binary
+*.ppm  binary
+*.tiff binary
+
+# Documents
+*.doc  diff=astextplain
+*.DOC  diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot  diff=astextplain
+*.DOT  diff=astextplain
+*.pdf  diff=astextplain
+*.PDF  diff=astextplain
+*.rtf  diff=astextplain
+*.RTF  diff=astextplain
