@@ -1,0 +1,24 @@
+# .gitignore
+
+# archive files
+*.bz2
+*.gz
+*.zip
+*.tar
+
+# common
+*.log
+
+# jetbrains ide
+.idea/
+
+# folders
+archive/
+
+# Operating system files
+*~
+~*.*
+.DS_Store
+[Dd]esktop.ini
+Thumbs.db
+
