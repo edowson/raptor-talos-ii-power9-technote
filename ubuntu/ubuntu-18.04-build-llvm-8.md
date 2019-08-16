@@ -327,10 +327,11 @@ Ref:
 
 ### CMake
 
-01. [[CMake] test endian ness](https://cmake.org/pipermail/cmake/2016-January/062474.html)
+01. [CMake: test endianness](https://cmake.org/pipermail/cmake/2016-January/062474.html)
 
 ```cmake
 include (TestBigEndian)
+```
 
 ### Ubuntu
 
@@ -344,8 +345,6 @@ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk-10/bin/java"
     --slave "/usr/bin/javadoc"      "javadoc"       "/opt/jdk-10/bin/javadoc" \
     --slave "/usr/bin/javap"        "javap"         "/opt/jdk-10/bin/javap" \
     --slave "/usr/bin/javaws"       "javaws"        "/opt/jdk-10/bin/javaws"
-```
-
 ```
 
 ### gcc
