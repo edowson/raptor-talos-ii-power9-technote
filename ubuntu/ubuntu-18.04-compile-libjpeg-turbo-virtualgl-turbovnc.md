@@ -1,6 +1,6 @@
-# Ubuntu-18.04 - Configure VirtualGL and TurboVNC
+# Ubuntu-18.04 - Compile libjpeg-turbo, VirtualGL and TurboVNC
 
-This document describes how to configure VirtualGL and TurboVNC from sources.
+This document describes how to compile libjpeg-turbo, VirtualGL and TurboVNC from sources.
 
 ## Procedure
 
@@ -87,10 +87,27 @@ libxinerama-dev \
 libxkbfile-dev \
 libxmu-dev \
 libxpm-dev \
+libxrandr-dev \
 libxres-dev \
 libxtst-dev \
 libxv-dev \
 libxt-dev
+```
+
+**[Do no install:]** Installation of the NVIDIA Capture SDK is not required,
+since the VirtuaGL libraries will need to be updated to use the latest
+version of the capture SDK. The earlier legacy grid-2.2 headers can be found here:
+`https://github.com/omega-hub/llenc/blob/master/GRID-2.2/NvIFR_API.h`
+
+Download the NVIDIA Capture SDK for Linux v7.1.6 from the following location:
+`https://developer.nvidia.com/designworks/capture_sdk/downloads/v7.1/linux`
+
+Extract the contents of the `Capture_Linux_v7.1.6.zip` file and re-organize the sdk folder
+structure such that the `nvEncodeAPI.h` and `NvFBC.h` header files are located in `/project/software/library/nvidia-capture-sdk/linux-v7.1.6/NvFBC/inc`.
+```bash
+unzip ./Capture_Linux_v7.1.6.zip -d /tmp
+mkdir -p /project/software/library/nvidia-capture-sdk/linux-v7.1.6
+mv -v /tmp/Capture_Linux_v7.1.6/Capture_Linux_v7.1.6/* /tmp/linux-v7.1.6
 ```
 
 Clone sources:
@@ -121,6 +138,7 @@ ccmake \
 -DVGL_SYSTEMGLX="ON" \
 -DVGL_SYSTEMXCB="ON" \
 -DVGL_USEIFR="OFF" \
+-DIFR_INCLUDE_DIR="/project/software/library/nvidia-capture-sdk/linux-v7.1.6/NvFBC/inc" \
 ../src
 ```
 
@@ -221,6 +239,12 @@ Install:
 ```bash
 sudo make install
 ```
+
+---
+
+## Downloads
+
+01. [NVIDIA Capture SDK v7.1](https://developer.nvidia.com/designworks/capture_sdk/downloads/v7.1/linux)
 
 ---
 

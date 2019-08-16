@@ -17,6 +17,15 @@ This system's motherboard has a dual-socket configuration and can support 4, 8, 
   - [ ] Quadro RTX 8000 with 48GB GDDR6
   - [ ] Quadro P6000 with 24GB GDDR5
 
+### Graphics and acceleration libraries.
+
+[Install NVIDIA graphics and acceleration libraries](./ubuntu-18.04-install-power9-raptor-talos-ii-nvidia-graphics-cuda-cudnn-tensorrt.md):
+- [x] NVIDIA proprietary graphics driver 418.87
+- [x] CUDA-10.1
+- [ ] cuDNN-7.6.2.24
+- [ ] TensorRT-5.1.5.0
+- [ ] NCCL-2.4.7
+
 ### Remote desktop access.
 
 [Compile libjpeg-turbo, VirtualGL and TurboVNC](./ubuntu/ubuntu-18.04-compile-libjpeg-turbo-virtualgl-turbovnc.md) from sources:
@@ -52,13 +61,7 @@ Choose any **one** of the following options to configuring remote desktop access
 
 ### Machine learning libraries.
 
-- [ ] CUDA-10.1
-- [ ] cuDNN
-- [ ] cuBLAS
-- [ ] TensorRT-5.x.x
-- [ ] NVCC
-- [ ] NCCL
-
+Machine learning libraries:
 - [ ] TensorFlow-2.0.0-beta1, compiled from source, branch: `2.0.0`. commit id: ``
 - [ ] PyTorch-1.2.0, compiled from source, branch: `v1.2.0`. commit id: ``
 
