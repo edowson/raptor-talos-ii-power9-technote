@@ -78,12 +78,13 @@ include (TestBigEndian)
 libcxx/include/chrono:877:59: error: ‘(9.223372036854775807e+18 / 1.0e+9)’ is not a constant expression
 ```
 
-Apply this patch if you're building `llvm` from the `release/8.x` branch.
-This patch has already been applied to the llvm `master` and `release/9.x` branches, but doesn't work because it is inverted.
+Apply this patch if you're building `llvm` from the `release/8.x` branch for `ppc64el` architecture.
+This patch has already been applied to the llvm `master` and `release/9.x` branches, but it doesn't work
+due to a wrong implementation. The correct fix for the [committed patch for llvm-project/libcxx](http://llvm.org/viewvc/llvm-project/libcxx/trunk/include/thread?view=patch&r1=357540&r2=357539&pathrev=357540) is shown below:
 
 Create the following file in `llvm-project/libcxx/patch` folder:
 
-`File: 001-libcxx-bug-39696-llvm-8.0.1.patch`
+`File: 001-libcxx-bug-39696-llvm-8.0.1-ppc64el.patch`
 ```diff
 diff --git a/libcxx/include/thread b/libcxx/include/thread
 index 8c0115f87..e439f60b9 100644
