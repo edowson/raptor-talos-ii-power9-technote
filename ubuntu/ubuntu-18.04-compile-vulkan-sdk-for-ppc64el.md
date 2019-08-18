@@ -87,11 +87,11 @@ export LANG="en_US.UTF-8"
 export PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 
 # host
-export HOST_ARCH="ppc64el"
+export CPU_ARCHITECTURE=$(uname -m)
 
 # Vulkan
 VULKAN_SDK_VERSION="1.1.114.0"
-export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$HOST_ARCH"
+export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$CPU_ARCHITECTURE"
 export VK_LAYER_PATH="${VULKAN_SDK}/etc/explicit_layer.d"
 
 export LD_LIBRARY_PATH="${VULKAN_SDK}/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"

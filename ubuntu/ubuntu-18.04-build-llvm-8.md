@@ -281,7 +281,7 @@ ccmake \
 
 ### llvm
 
-01. [https://bugs.llvm.org/show_bug.cgi?id=39696](Bug 39696 - Workaround "error: ‘(9.223372036854775807e+18 / 1.0e+9)’ is not a constant expression")
+01. [Bug 39696 - Workaround "error: ‘(9.223372036854775807e+18 / 1.0e+9](https://bugs.llvm.org/show_bug.cgi?id=39696)’ is not a constant expression")
 
 `libcxx` fails to compile with the following error:
 ```
