@@ -717,10 +717,10 @@ These steps should be performed after installing the NVIDIA proprietary driver, 
 #### Step 02.05: Install Vulkan SDK.
 
 **Note:** While the procedure outlined below is generally correct, the current version of the
-NVIDIA drivers (418.67) for `ppc64el` doesn't have support for Vulkan rendering. You will have
+NVIDIA drivers (418.67) for `ppc64el` dpkg arch doesn't have support for Vulkan rendering. You will have
 to wait for a newer driver (e.g. 430.40 or higher).
 
-[Ubuntu-18.04 - Compile Vulkan SDK for ppc64el](./ubuntu-18.04-compile-vulkan-sdk-for-ppc64el.md)
+[Ubuntu-18.04 - Compile Vulkan SDK for ppc64el dpkg arch](./ubuntu-18.04-compile-vulkan-sdk-for-ppc64el-dpkg-arch.md)
 
 ---
 
@@ -838,7 +838,7 @@ export LANG="en_US.UTF-8"
 export PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 
 # host
-export CPU_ARCHITECTURE=$(uname -m)
+export DPKG_ARCH=`dpkg --print-architecture`
 
 # NVIDIA CUDA environment variables
 CUDA_VERSION=10.1
@@ -859,7 +859,7 @@ export TVNC_NTHREADS=32
 
 # Vulkan
 VULKAN_SDK_VERSION="1.1.114.0"
-export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$CPU_ARCHITECTURE"
+export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$DPKG_ARCH"
 export VK_LAYER_PATH="${VULKAN_SDK}/etc/explicit_layer.d"
 
 export LD_LIBRARY_PATH="${CUDA}/lib64:${CUDA}/extras/CUPTI/lib64:${TENSORRT}/lib:${VULKAN_SDK}/lib:${LIBTURBO_JPEG_DIR}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
@@ -873,7 +873,7 @@ source ~/.bashrc
 
 #### Step 04.04: Make a VirtualGL connection.
 
-Launch `vmcserver` on the remote host:
+Launch `vncserver` on the remote host:
 ```bash
 /opt/TurboVNC/bin/vncserver
 
@@ -922,7 +922,7 @@ VGL_LOGO=1 vglrun -d :1 glxgears
 VGL_TRACE=1 vglrun +v -d :1 glxgears
 ```
 
-Run the `/opt/VirtualGL/bin//glxspheres64` performance test:
+Run the `/opt/VirtualGL/bin/glxspheres64` performance test:
 ```bash
 vglrun -d :1 glxspheres64
 ```

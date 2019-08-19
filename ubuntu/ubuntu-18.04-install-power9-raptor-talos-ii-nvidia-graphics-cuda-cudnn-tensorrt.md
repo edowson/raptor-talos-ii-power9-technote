@@ -147,7 +147,7 @@ export LANG="en_US.UTF-8"
 export PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 
 # host
-export CPU_ARCHITECTURE=$(uname -m)
+export DPKG_ARCH=`dpkg --print-architecture`
 
 # NVIDIA CUDA environment variables
 CUDA_VERSION=10.1
@@ -168,7 +168,7 @@ export TVNC_NTHREADS=32
 
 # Vulkan
 VULKAN_SDK_VERSION="1.1.114.0"
-export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$CPU_ARCHITECTURE"
+export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$DPKG_ARCH"
 export VK_LAYER_PATH="${VULKAN_SDK}/etc/explicit_layer.d"
 
 export LD_LIBRARY_PATH="${CUDA}/lib64:${CUDA}/extras/CUPTI/lib64:${TENSORRT}/lib:${VULKAN_SDK}/lib:${LIBTURBO_JPEG_DIR}/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}"
