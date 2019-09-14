@@ -149,7 +149,7 @@ cd /project/software/tool/llvm/llvm-project/build/
 
 # optional: build tests. ensure that googletest is build as a shared library.
 ccmake \
--DCMAKE_INSTALL_PREFIX="/project/software/tool/llvm/llvm-project/install" \
+-DCMAKE_INSTALL_PREFIX="/usr/local" \
 -DCMAKE_BUILD_TYPE="Release" \
 -DBUILD_SHARED_LIBS=ON \
 -DLLVM_BUILD_BENCHMARKS=OFF \

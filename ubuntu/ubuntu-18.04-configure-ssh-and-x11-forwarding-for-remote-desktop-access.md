@@ -240,7 +240,7 @@ To transfer files using `scp` between two computers, type the following command:
 
 ```bash
 # copy a single file
-scp $USER@apollo.pub $USER@192.168.1.11:/home/$USER/.ssh
+scp $USER@apollo $USER@192.168.1.11:/home/$USER/.ssh
 
 # specify ssh port
 scp -P 8420 <filename> $USER@talos2:/home/$USER/Downloads

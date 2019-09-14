@@ -418,6 +418,11 @@ X DISPLAY #	PROCESS ID
 :1		17078
 ```
 
+Kill a vncserver session:
+```bash
+vncserver -kill :1
+```
+
 You can disconnect now.
 ```bash
 exit
