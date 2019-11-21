@@ -15,14 +15,11 @@ OS_DISTRO="ubuntu"
 OS_VERSION="1804"
 OS_ARCH="ppc64el"
 
-# package versions
-CUDA_VERSION="10.1"
+# package versions: 10.1, 10.2
+CUDA_VERSION="10.2"
+
 CUDA_MAJOR_VERSION=`echo $CUDA_VERSION | cut -d. -f1`
 CUDA_MINOR_VERSION=`echo $CUDA_VERSION | cut -d. -f2`
-CUDNN_VERSION="7.6.2.24"
-CUDNN_MAJOR_VERSION=`echo $CUDNN_VERSION | cut -d. -f1`
-NCCL2_VERSION="2.4.7"
-TENSORRT_VERSION="5.1.5.0"
 ```
 
 Install required packages:
@@ -51,41 +48,67 @@ sudo apt update
 
 #### Step 01.02: Install NVIDIA CUDA.
 
+Update the system:
+```bash
+sudo apt update; sudo apt upgrade;
+```
+
+Remove old kernel versions:
+```bash
+sudo -s
+apt-get --purge remove $(dpkg --list | egrep -i 'linux-image|linux-headers' | awk '/ii/{ print $2}' | egrep -v "$i")
+```
+
+Install CUDA:
 ```bash
 # meta-package
 sudo apt install cuda-$CUDA_MAJOR_VERSION-$CUDA_MINOR_VERSION
 
 # output:
 The following additional packages will be installed:
-  cuda-command-line-tools-10-1 cuda-compiler-10-1 cuda-cudart-10-1 cuda-cudart-dev-10-1 cuda-cufft-10-1
-  cuda-cufft-dev-10-1 cuda-cuobjdump-10-1 cuda-cupti-10-1 cuda-curand-10-1 cuda-curand-dev-10-1 cuda-cusolver-10-1
-  cuda-cusolver-dev-10-1 cuda-cusparse-10-1 cuda-cusparse-dev-10-1 cuda-documentation-10-1 cuda-driver-dev-10-1
-  cuda-drivers cuda-gdb-10-1 cuda-gpu-library-advisor-10-1 cuda-libraries-10-1 cuda-libraries-dev-10-1
-  cuda-license-10-1 cuda-memcheck-10-1 cuda-misc-headers-10-1 cuda-npp-10-1 cuda-npp-dev-10-1 cuda-nsight-10-1
-  cuda-nsight-compute-10-1 cuda-nvcc-10-1 cuda-nvdisasm-10-1 cuda-nvgraph-10-1 cuda-nvgraph-dev-10-1 cuda-nvjpeg-10-1
-  cuda-nvjpeg-dev-10-1 cuda-nvml-dev-10-1 cuda-nvprof-10-1 cuda-nvprune-10-1 cuda-nvrtc-10-1 cuda-nvrtc-dev-10-1
-  cuda-nvtx-10-1 cuda-nvvp-10-1 cuda-runtime-10-1 cuda-samples-10-1 cuda-toolkit-10-1 cuda-tools-10-1
-  cuda-visual-tools-10-1 libcublas-dev libcublas10 libnvidia-cfg1-418 libnvidia-common-418 libnvidia-common-430
-  libnvidia-compute-418 libnvidia-decode-418 libnvidia-encode-418 libnvidia-fbc1-418 libnvidia-gl-418
-  libnvidia-ifr1-418 libvdpau1 libxnvctrl0 mesa-vdpau-drivers nsight-compute-2019.4.0 nvidia-compute-utils-418
-  nvidia-dkms-418 nvidia-driver-418 nvidia-kernel-common-418 nvidia-kernel-source-418 nvidia-modprobe nvidia-prime
-  nvidia-settings nvidia-utils-418 screen-resolution-extra vdpau-driver-all xserver-xorg-video-nvidia-418
+  cuda-command-line-tools-10-2 cuda-compiler-10-2 cuda-cudart-10-2
+  cuda-cudart-dev-10-2 cuda-cufft-10-2 cuda-cufft-dev-10-2 cuda-cuobjdump-10-2
+  cuda-cupti-10-2 cuda-cupti-dev-10-2 cuda-curand-10-2 cuda-curand-dev-10-2
+  cuda-cusolver-10-2 cuda-cusolver-dev-10-2 cuda-cusparse-10-2
+  cuda-cusparse-dev-10-2 cuda-documentation-10-2 cuda-driver-dev-10-2
+  cuda-drivers cuda-gdb-10-2 cuda-libraries-10-2 cuda-libraries-dev-10-2
+  cuda-license-10-2 cuda-memcheck-10-2 cuda-misc-headers-10-2 cuda-npp-10-2
+  cuda-npp-dev-10-2 cuda-nsight-10-2 cuda-nsight-compute-10-2 cuda-nvcc-10-2
+  cuda-nvdisasm-10-2 cuda-nvgraph-10-2 cuda-nvgraph-dev-10-2 cuda-nvjpeg-10-2
+  cuda-nvjpeg-dev-10-2 cuda-nvml-dev-10-2 cuda-nvprof-10-2 cuda-nvprune-10-2
+  cuda-nvrtc-10-2 cuda-nvrtc-dev-10-2 cuda-nvtx-10-2 cuda-nvvp-10-2
+  cuda-runtime-10-2 cuda-samples-10-2 cuda-toolkit-10-2 cuda-tools-10-2
+  cuda-visual-tools-10-2 libcublas-dev libcublas10 libnvidia-cfg1-440
+  libnvidia-common-440 libnvidia-compute-440 libnvidia-decode-440
+  libnvidia-encode-440 libnvidia-fbc1-440 libnvidia-gl-440 libnvidia-ifr1-440
+  libvdpau1 libxnvctrl0 mesa-vdpau-drivers nsight-compute-2019.5.0
+  nvidia-compute-utils-440 nvidia-dkms-440 nvidia-driver-440
+  nvidia-kernel-common-440 nvidia-kernel-source-440 nvidia-modprobe
+  nvidia-prime nvidia-settings nvidia-utils-440 screen-resolution-extra
+  vdpau-driver-all xserver-xorg-video-nvidia-440
 Suggested packages:
   libvdpau-va-gl1
 The following NEW packages will be installed:
-  cuda-10-1 cuda-command-line-tools-10-1 cuda-compiler-10-1 cuda-cudart-10-1 cuda-cudart-dev-10-1 cuda-cufft-10-1
-  cuda-cufft-dev-10-1 cuda-cuobjdump-10-1 cuda-cupti-10-1 cuda-curand-10-1 cuda-curand-dev-10-1 cuda-cusolver-10-1
-  cuda-cusolver-dev-10-1 cuda-cusparse-10-1 cuda-cusparse-dev-10-1 cuda-documentation-10-1 cuda-driver-dev-10-1
-  cuda-drivers cuda-gdb-10-1 cuda-gpu-library-advisor-10-1 cuda-libraries-10-1 cuda-libraries-dev-10-1
-  cuda-license-10-1 cuda-memcheck-10-1 cuda-misc-headers-10-1 cuda-npp-10-1 cuda-npp-dev-10-1 cuda-nsight-10-1
-  cuda-nsight-compute-10-1 cuda-nvcc-10-1 cuda-nvdisasm-10-1 cuda-nvgraph-10-1 cuda-nvgraph-dev-10-1 cuda-nvjpeg-10-1
-  cuda-nvjpeg-dev-10-1 cuda-nvml-dev-10-1 cuda-nvprof-10-1 cuda-nvprune-10-1 cuda-nvrtc-10-1 cuda-nvrtc-dev-10-1
-  cuda-nvtx-10-1 cuda-nvvp-10-1 cuda-runtime-10-1 cuda-samples-10-1 cuda-toolkit-10-1 cuda-tools-10-1
-  cuda-visual-tools-10-1 libcublas-dev libcublas10 libnvidia-cfg1-418 libnvidia-common-418 libnvidia-common-430
-  libnvidia-compute-418 libnvidia-decode-418 libnvidia-encode-418 libnvidia-fbc1-418 libnvidia-gl-418
-  libnvidia-ifr1-418 libvdpau1 libxnvctrl0 mesa-vdpau-drivers nsight-compute-2019.4.0 nvidia-compute-utils-418
-  nvidia-dkms-418 nvidia-driver-418 nvidia-kernel-common-418 nvidia-kernel-source-418 nvidia-modprobe nvidia-prime
-  nvidia-settings nvidia-utils-418 screen-resolution-extra vdpau-driver-all xserver-xorg-video-nvidia-418
+  cuda-10-2 cuda-command-line-tools-10-2 cuda-compiler-10-2 cuda-cudart-10-2
+  cuda-cudart-dev-10-2 cuda-cufft-10-2 cuda-cufft-dev-10-2 cuda-cuobjdump-10-2
+  cuda-cupti-10-2 cuda-cupti-dev-10-2 cuda-curand-10-2 cuda-curand-dev-10-2
+  cuda-cusolver-10-2 cuda-cusolver-dev-10-2 cuda-cusparse-10-2
+  cuda-cusparse-dev-10-2 cuda-documentation-10-2 cuda-driver-dev-10-2
+  cuda-drivers cuda-gdb-10-2 cuda-libraries-10-2 cuda-libraries-dev-10-2
+  cuda-license-10-2 cuda-memcheck-10-2 cuda-misc-headers-10-2 cuda-npp-10-2
+  cuda-npp-dev-10-2 cuda-nsight-10-2 cuda-nsight-compute-10-2 cuda-nvcc-10-2
+  cuda-nvdisasm-10-2 cuda-nvgraph-10-2 cuda-nvgraph-dev-10-2 cuda-nvjpeg-10-2
+  cuda-nvjpeg-dev-10-2 cuda-nvml-dev-10-2 cuda-nvprof-10-2 cuda-nvprune-10-2
+  cuda-nvrtc-10-2 cuda-nvrtc-dev-10-2 cuda-nvtx-10-2 cuda-nvvp-10-2
+  cuda-runtime-10-2 cuda-samples-10-2 cuda-toolkit-10-2 cuda-tools-10-2
+  cuda-visual-tools-10-2 libcublas-dev libcublas10 libnvidia-cfg1-440
+  libnvidia-common-440 libnvidia-compute-440 libnvidia-decode-440
+  libnvidia-encode-440 libnvidia-fbc1-440 libnvidia-gl-440 libnvidia-ifr1-440
+  libvdpau1 libxnvctrl0 mesa-vdpau-drivers nsight-compute-2019.5.0
+  nvidia-compute-utils-440 nvidia-dkms-440 nvidia-driver-440
+  nvidia-kernel-common-440 nvidia-kernel-source-440 nvidia-modprobe
+  nvidia-prime nvidia-settings nvidia-utils-440 screen-resolution-extra
+  vdpau-driver-all xserver-xorg-video-nvidia-440
 ```
 
 #### Step 01.03: Power9 specific post-install setup.
@@ -95,7 +118,7 @@ There are two changes that need to be made manually after installing the NVIDIA 
 
 The NVIDIA Persistence Daemon should be automatically started for POWER9 installations. Check that it is running with the following command:
 ```bash
-$ systemctl status nvidia-persistenced
+$ sudo systemctl status nvidia-persistenced
 ```
 
 If it is not active, run the following command:
@@ -150,7 +173,7 @@ export PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 export DPKG_ARCH=`dpkg --print-architecture`
 
 # NVIDIA CUDA environment variables
-CUDA_VERSION=10.1
+CUDA_VERSION=10.2
 CUDNN_VERSION=7.6.2.24
 NCCL_VERSION=2.4.7-1
 CUDA=/usr/local/cuda-${CUDA_VERSION}
@@ -167,7 +190,7 @@ export TVNC_MT=1
 export TVNC_NTHREADS=32
 
 # Vulkan
-VULKAN_SDK_VERSION="1.1.114.0"
+VULKAN_SDK_VERSION="1.1.126.0"
 export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$DPKG_ARCH"
 export VK_LAYER_PATH="${VULKAN_SDK}/etc/explicit_layer.d"
 

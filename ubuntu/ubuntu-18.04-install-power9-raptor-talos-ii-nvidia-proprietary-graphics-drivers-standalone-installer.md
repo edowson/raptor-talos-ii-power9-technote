@@ -62,11 +62,11 @@ We can see that the NVIDIA V100 GPU is connect to PCIe slot `0030:01:00.0`.
 
 Download the driver:
 ```bash
-NVIDIA_DRIVER_VERSION='418.67'
-NVIDIA_DRIVER_RELEASE_DATE='2019.5.7'
+NVIDIA_DRIVER_VERSION='440.33.01'
+NVIDIA_DRIVER_RELEASE_DATE='2019.11.19'
 OS_DISTRO='ubuntu'
 OS_VERSION='1804'
-ARCH='ppc64le'
+ARCH='ppc64el'
 
 URL1="http://us.download.nvidia.com/tesla/$NVIDIA_DRIVER_VERSION/NVIDIA-Linux-$ARCH-$NVIDIA_DRIVER_VERSION.run"
 URL2="http://us.download.nvidia.com/tesla/$NVIDIA_DRIVER_VERSION/nvidia-driver-local-repo-$OS_DISTRO$OS_VERSION-${NVIDIA_DRIVER_VERSION}_1.0-1_$ARCH.deb"

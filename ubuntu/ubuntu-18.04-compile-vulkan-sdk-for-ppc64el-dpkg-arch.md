@@ -47,7 +47,7 @@ to wait for a newer driver (e.g. 430.40 or higher).
 
 Download the vulkan sdk:
 ```bash
-VULKAN_SDK_VERSION="1.1.114.0"
+VULKAN_SDK_VERSION="1.1.126.0"
 echo "downloading Vulkan SDK $VULKAN_SDK_VERSION" \
 && wget -q --show-progress --progress=bar:force:noscroll https://sdk.lunarg.com/sdk/download/$VULKAN_SDK_VERSION/linux/vulkansdk-linux-x86_64-$VULKAN_SDK_VERSION.tar.gz?Human=true -O /tmp/vulkansdk-linux-x86_64-$VULKAN_SDK_VERSION.tar.gz
 ```
@@ -71,7 +71,7 @@ The root SDK directory contains a script named vulkansdk to aid with building bi
 
 Modify the sources in the vulkan sdk to build for `ppc64el` dpkg arch:
 ```bash
-nano /project/software/library/vulkan/1.1.114.0/vulkansdk
+nano /project/software/library/vulkan/1.1.126.0/vulkansdk
 ```
 
 Make the following changes to the `vulkansdk` file, line 196 to query the host system architecture and set the `$ARCHDIR` output folder:
@@ -99,7 +99,7 @@ export PS1="${debian_chroot:+($debian_chroot)}\u:\W\$ "
 export DPKG_ARCH=`dpkg --print-architecture`
 
 # Vulkan
-VULKAN_SDK_VERSION="1.1.114.0"
+VULKAN_SDK_VERSION="1.1.126.0"
 export VULKAN_SDK="/project/software/library/vulkan/${VULKAN_SDK_VERSION}/$DPKG_ARCH"
 export VK_LAYER_PATH="${VULKAN_SDK}/etc/explicit_layer.d"
 
@@ -184,7 +184,7 @@ Add the following entries:
     "file_format_version" : "1.0.0",
     "ICD" : {
         "library_path": "libGLX_nvidia.so.0",
-        "api_version" : "1.1.95"
+        "api_version" : "1.1.119"
     }
 }
 ```
@@ -194,7 +194,7 @@ Check the nvidia-driver api version:
 vulkaninfo | grep apiVersion
 
 'DISPLAY' environment variable not set... skipping surface info
-	apiVersion     = 0x40105f  (1.1.95)
+	apiVersion     = 0x401077  (1.1.119)
 ```
 
 Check vulkan ray-tracing support:

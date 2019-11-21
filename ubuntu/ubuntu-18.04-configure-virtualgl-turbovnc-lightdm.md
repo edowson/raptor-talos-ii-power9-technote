@@ -266,7 +266,7 @@ ssh -XY $USER@$HOST_ADAPTER1_IP
 
 Check status of `lightdm` service:
 ```bash
-service service lightdm status
+sudo service lightdm status
 
 ● lightdm.service - Light Display Manager
    Loaded: loaded (/lib/systemd/system/lightdm.service; indirect; vendor preset: enabled)

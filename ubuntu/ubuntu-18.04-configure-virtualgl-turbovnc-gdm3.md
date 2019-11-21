@@ -274,6 +274,19 @@ talos2/unix:10  MIT-MAGIC-COOKIE-1  <magic-cookie>
 ```
 
 
+
+Optional: Check gdm3 configuration files:
+```bash
+cd /usr/share/gdm/greeter/autostart/
+
+cat virtualgl.desktop
+
+[Desktop Entry]
+Type=Application
+Exec=/opt/VirtualGL/bin/vglgenkey
+```
+
+
 #### Step 01.03: Configure remote client machine.
 
 **Important:** You will also need to create `vgluser` group with the same `gid` on every client
