@@ -134,10 +134,11 @@ ccmake \
 -DCMAKE_BUILD_TYPE="Release" \
 -DTJPEG_INCLUDE_DIR="/opt/libjpeg-turbo/include" \
 -DTJPEG_LIBRARY="-L/opt/libjpeg-turbo/lib64 -lturbojpeg" \
+-DVGL_FAKEOPENCL="OFF" \
 -DVGL_USESSL=1 \
--DVGL_SYSTEMGLX="ON" \
--DVGL_SYSTEMXCB="ON" \
+-DVGL_FAKEXCB="ON" \
 -DVGL_USEIFR="OFF" \
+-DVGL_USEXV="ON" \
 -DIFR_INCLUDE_DIR="/project/software/library/nvidia-capture-sdk/linux-v7.1.6/NvFBC/inc" \
 ../src
 ```

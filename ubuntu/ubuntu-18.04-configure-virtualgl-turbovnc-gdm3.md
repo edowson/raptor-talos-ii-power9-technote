@@ -112,6 +112,13 @@ X) Exit
 Choose:
 1
 
+WARNING: Configuring this server for use with VirtualGL will disable the
+ability to log in locally with a Wayland session.
+
+Continue?
+[Y/n]
+
+
 Restrict 3D X server access to vglusers group (recommended)?
 [Y/n]
 y
@@ -131,7 +138,10 @@ Could not add vglusers group (probably because it already exists.)
 ... Granting read permission to /etc/opt/VirtualGL/ for vglusers group ...
 ... Creating /etc/modprobe.d/virtualgl.conf to set requested permissions for
     /dev/nvidia* ...
-... Granting write permission to /dev/nvidia0 /dev/nvidiactl for vglusers group ...
+... Attempting to remove nvidia module from memory so device permissions
+    will be reloaded ...
+rmmod: ERROR: Module nvidia is in use by: nvidia_uvm nvidia_modeset
+... Granting write permission to /dev/nvidia-modeset /dev/nvidia-uvm /dev/nvidia-uvm-tools /dev/nvidia0 /dev/nvidiactl for vglusers group ...
 ... Granting write permission to /dev/dri/card0 for vglusers group ...
 ... Modifying /etc/X11/xorg.conf to enable DRI permissions
     for vglusers group ...
@@ -272,8 +282,6 @@ user@local> xauth list
 apollo/unix:  MIT-MAGIC-COOKIE-1  <magic-cookie>
 talos2/unix:10  MIT-MAGIC-COOKIE-1  <magic-cookie>
 ```
-
-
 
 Optional: Check gdm3 configuration files:
 ```bash
