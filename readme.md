@@ -15,7 +15,9 @@ This system's motherboard has a dual-socket configuration and can support 4, 8, 
   - [x] Tesla V100 with 16GB HBM2
   - [ ] Titan-V with 12GB HBM2
   - [ ] Quadro RTX 8000 with 48GB GDDR6
+  - [x] GeForce RTX 2070 with 8GB GDDR6
   - [ ] Quadro P6000 with 24GB GDDR5
+
 
 ### Graphics and acceleration libraries.
 
@@ -56,8 +58,8 @@ Choose any **one** of the following options to configuring remote desktop access
 
 ### Game engines.
 
-- [ ] UE4.22.3 port to ppc64el.
-- [ ] UE4.23 port to ppc64el.
+- [ ] UE4.22.3 port to ppc64le.
+- [x] UE4.23.1 port to ppc64le.
 
 ### Machine learning libraries.
 
