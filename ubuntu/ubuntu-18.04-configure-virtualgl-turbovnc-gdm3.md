@@ -87,6 +87,7 @@ sudo -s
 
 # rmmod nvidia driver modules before configuring the vglserver
 rmmod nvidia_drm
+rmmod nvidia_uvm
 rmmod nvidia_modeset
 rmmod nvidia
 
@@ -104,8 +105,10 @@ You will be asked three questions during this configuration. You can arrange thi
 
 Here is a sample screen output:
 ```bash
-1) Configure server for use with VirtualGL
-2) Unconfigure server for use with VirtualGL
+1) Configure server for use with VirtualGL (GLX + EGL back ends)
+2) Unconfigure server for use with VirtualGL (GLX + EGL back ends)
+3) Configure server for use with VirtualGL (EGL back end only)
+4) Unconfigure server for use with VirtualGL (EGL back end only)
 X) Exit
 
 # select option 1
